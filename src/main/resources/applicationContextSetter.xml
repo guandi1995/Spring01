@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--                方式一：XML-Based配置Bean             -->
+<!--                      XML+setter-->
+
+<!--    将StudentMapperImpl注册到容器中-->
+    <bean id="stuMapper" class="com.mapper.StudentMapperImpl"></bean>
+
+<!--    将StudentServiceImpl注册到容器中，并将stuMapper注入到stuService中-->
+    <bean id="stuService" class="com.service.StudentServiceImpl">
+<!--        property中的name属性对应的是StudentServiceImpl中的属性名-->
+<!--        ref属性对应的是StudengMapperImpl bean的id:stuMapper-->
+        <property name="studentMapper" ref="stuMapper"/>
+    </bean>
+
+</beans>
